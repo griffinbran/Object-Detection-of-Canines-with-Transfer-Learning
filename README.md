@@ -10,7 +10,7 @@ Capstone Project
 
   Questions to be explored:
 > 1. Point 1...
-> 2. Point 2...
+> 2. Transfer Learning: VGG-19
 > 3. What is a reasonable 'optical cue'?
 <br>
 ---
@@ -184,10 +184,12 @@ External Resources:
 * [`VQA labeled images of dogs`] (Visual Genome): ([*source*](https://visualgenome.org/VGViz/explore?query=dogs))
 * [`Google Open Source: Dog Detection`] (Open Images): ([*source*](https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F0bt9lr))
 * [`Google Open Source: Dog Segmentation`] (Open Images): ([*source*](https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=segmentation&c=%2Fm%2F0bt9lr&r=false))
+* [`VGG-19`] (Keras API): ([*source*](https://keras.io/api/applications/vgg/))
 
 
 Papers:
 * `VisualBackProp: efficient visualization of CNNs` (arXiv): ([*source*](https://arxiv.org/pdf/1611.05418.pdf))
+* `VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION` (arXiv): ([*source*](https://arxiv.org/pdf/1409.1556.pdf))
 
 ### Contact:
 
