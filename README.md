@@ -182,10 +182,11 @@ Here is some background info:
 External Resources:
 * [`High quality images of dogs`] (Unsplash): ([*source*](https://unsplash.com/s/photos/dogs))
 * [`VQA labeled images of dogs`] (Visual Genome): ([*source*](https://visualgenome.org/VGViz/explore?query=dogs))
+* [`Google Open Source: Dog Detection`] (Open Images): ([*source*](https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F0bt9lr))
+* [`Google Open Source: Dog Segmentation`] (Open Images): ([*source*](https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=segmentation&c=%2Fm%2F0bt9lr&r=false))
 
 
 Papers:
-* `End-to-End Deep Learning for Self-Driving Cars` (NVIDIA Developer Blog): ([*source*](https://developer.nvidia.com/blog/deep-learning-self-driving-cars/))
 * `VisualBackProp: efficient visualization of CNNs` (arXiv): ([*source*](https://arxiv.org/pdf/1611.05418.pdf))
 
 ### Contact:
