@@ -6,11 +6,17 @@ Capstone Project
 
 ---
 ### Problem Statement
-***TO DO***
+***Can an image be used to accurately describe itself?***
+* Visual Question Answering (VQA)
+* Audience:  Computer vision enthusiasts, dog lovers, security services, and the visually impaired
+* Image data is a rich source of information. This project will aims to  automate the task of extracting  image descriptions.
+
 
   Questions to be explored:
-> 1. Point 1...
-> 2. Transfer Learning: VGG-19
+> 1. Is the dog inside or outside?
+> 2. Does it have a friend?
+> 3. What breed is it?
+> 2. What layers need to be pre-trained?
 > 3. What is a reasonable 'optical cue'?
 <br>
 ---
@@ -21,8 +27,8 @@ This DSI module covers:
 - Machine Learning for Deep Neural Networks (TensorFlow, Keras API)
 - 
 - Computer Vision ( RGB image processing, image formation, feature detection, computational photography)
-- Convolutional Neural Networks (regularization, automated pattern recognition, )
-- 
+- Convolutional Neural Networks(CNN)- regularization, automated pattern recognition, ...
+- Transfer Learning with a pre-trained deep learning image classifier (VGG-16 CNN from Visual Geometry Group in 2016)
 
 ### Contents
 
@@ -189,7 +195,7 @@ External Resources:
 
 Papers:
 * `VisualBackProp: efficient visualization of CNNs` (arXiv): ([*source*](https://arxiv.org/pdf/1611.05418.pdf))
-* `VERY DEEP CONVOLUTIONAL NETWORKS FOR LARGE-SCALE IMAGE RECOGNITION` (arXiv): ([*source*](https://arxiv.org/pdf/1409.1556.pdf))
+* `Very Deep Convolutional Networks For Large-Scale Image Recognition` (arXiv): ([*source*](https://arxiv.org/pdf/1409.1556.pdf))
 
 ### Contact:
 
