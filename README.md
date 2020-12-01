@@ -28,7 +28,7 @@ This DSI module covers:
 - 
 - Computer Vision ( RGB image processing, image formation, feature detection, computational photography)
 - Convolutional Neural Networks(CNN)- regularization, automated pattern recognition, ...
-- Transfer Learning with a pre-trained deep learning image classifier (VGG-16 CNN from Visual Geometry Group in 2016)
+- Transfer Learning with a pre-trained deep learning image classifier (VGG-16 CNN from Visual Geometry Group in 2014)
 
 ### Contents
 
@@ -44,8 +44,8 @@ This DSI module covers:
 ### Background
 
 Here is some background info:
-> * 
-> * 
+> * Transfer learning: pre-existing model, trained on a LOT of data, used elsewhere.
+> * Eliminates the need to afford cost of training deep learning models from scratch
 > * 
 > * 
 > * 
@@ -67,21 +67,38 @@ Here is some background info:
 |**variable1**|*dtype*|Origin of Data|*Category*|*Description*|
 
 
-|**CNN Architecture**|*Kernel Size*|*neurons*|No. of Images|*Stride*|*Shape ( h x w x RGB )*|
-|---|---|---|---|---|---|
-|**Input Layer**|*None*|None|< sample size >|None|*( 160 x 320 x 3 )*|
-|**Convolution 01**|*( 5 x 5 )*|24|24|*( 2 x 2 )*|*(  78 x 158 x 3 )*|
-|**Convolution 02**|*( 5 x 5 )*|36|864|*( 2 x 2 )*|*(  37 x  77 x 3 )*|
-|**Convolution 03**|*( 5 x 5 )*|48|41,472|*( 2 x 2 )*|*(  16 x  36 x 3 )*|
-|**Convolution 04**|*( 3 x 3 )*|64|2,654,208|*None*|*(  37 x  77 x 3 )*|
-|**Convolution 05**|*( 3 x 3 )*|64|169,869,312|*None*|*(  16 x  36 x 3 )*|
-|**Dropout**|*None*|None|169,869,312|*None*|*(  16 x  36 x 3 )*|
-|**Flatten**|*None*|None|169,869,312|*None*|*(  16 x  36 x 3 )*|
-|**Dense 01**|*None*|100|169,869,312|*None*|*(  16 x  36 x 3 )*|
-|**Dense 02**|*None*|50|169,869,312|*None*|*(  16 x  36 x 3 )*|
-|**Dense 03**|*None*|10|169,869,312|*None*|*(  16 x  36 x 3 )*|
-|**Dense Output**|*None*|1|169,869,312|*None*|*(  16 x  36 x 3 )*|
+|**VGG-16 Block**|**CNN Layer (Type)**|*Kernel Size*|*Nodes*|Parameters|*Stride*|*Output Shape ( h x w x Ch )*|
+|---|---|---|---|---|---|---|
+|**First**|**input1 (Input)**|*No Filter*|None|0|None|*( None, 224, 224, 3 ) -RGB*|
+|**Block 01**|**conv1 (Conv2D)**|*( 3 x 3 )*|64|1,792|*( 1 x 1 )*|*(  None, 224, 224, 64 )*|
+|**Block 01**|**conv2 (Conv2D)**|*( 3 x 3 )*|64| 36,928 |*( 1 x 1 )*|*(  None, 224, 224, 64 )*|
+|<span style="color:yellow">**Block 01**</span>|<span style="color:yellow">**pool1 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*(  None, 112, 112, 64 )*|
+|**Block 02**|**conv1 (Conv2D)**|*( 3 x 3 )*|128| 73,856 |*( 1 x 1 )*|*(  None, 112, 112, 128 )*|
+|**Block 02**|**conv2 (Conv2D)**|*( 3 x 3 )*|128| 147,584 |*( 1 x 1 )*|*(  None, 112, 112, 128 )*|
+|<span style="color:yellow">**Block 02**</span>|<span style="color:yellow">**pool2 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*(  None, 56, 56, 128 )*|
+|**Block 03**|**conv1 (Conv2D)**|*( 3 x 3 )*|256| 295,168 |*( 1 x 1 )*|*(  None, 56, 56, 256 )*|
+|**Block 03**|**conv2 (Conv2D)**|*( 3 x 3 )*|256| 590,080 |*( 1 x 1 )*|*(  None, 56, 56, 256 )*|
+|**Block 03**|**conv3 (Conv2D)**|*( 3 x 3 )*|256| 590,080 |*( 1 x 1 )*|*(  None, 56, 56, 256 )*|
+|<span style="color:yellow">**Block 03**</span>|<span style="color:yellow">**pool3 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*(  None, 28, 28, 256 )*|
+|**Block 04**|**conv1 (Conv2D)**|*( 3 x 3 )*|512| 1,180,160 |*( 1 x 1 )*|*(  None, 28, 28, 512 )*|
+|**Block 04**|**conv2 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( None, 28, 28, 512 )*|
+|**Block 04**|**conv3 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*(  None, 28, 28, 512 )*|
+|<span style="color:yellow">**Block 04**</span>|<span style="color:yellow">**pool4 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*(  None, 14, 14, 512 )*|
+|**Block 05**|**conv1 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( None, 14, 14, 512 )*|
+|**Block 05**|**conv2 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( None, 14, 14, 512 )*|
+|**Block 05**|**conv3 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*(  None, 14, 14, 512 )*|
+|<span style="color:yellow">**Block 05**</span>|<span style="color:yellow">**pool5 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*( None, 7, 7, 512 )* 25_088 = 7x7x512|
+|**---**|**flatten (Flatten)**|*No Filter*|---|---|*( ? x ? )*|*(  None, 25088 )*|
+|**Fully Connected**|**fc 01 (Dense)**|*( 3 x 3 )*|50| 16,781,312 |*( 1 x 1 )*|*(  None, 4,096 )*|
+|**Fully Connected**|**fc 02 (Dense)**|*( 3 x 3 )*|50| 16,781,312 |*( 1 x 1 )*|*(  None, 4,096 )*|
+|**Last**|**Output (Dense)**|*( 3 x 3 )*|1| 4,097,000 |*( 1 x 1 )*|*( None, 1,000 )*|
 
+
+Total params: 138,357,544
+Trainable params: 138,357,544
+Non-trainable params: 0
+
+# ![](https://neurohive.io/wp-content/uploads/2018/11/vgg16-neural-network.jpg)
 
 |**CNN Model**|*Split*|*Epoch*|*Loss*|*Accuracy*|
 |---|---|---|---|---|
