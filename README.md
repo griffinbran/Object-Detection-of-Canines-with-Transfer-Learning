@@ -196,7 +196,7 @@ Non-trainable params: 0
 ---
 <a id='software_requirements'></a>
 ### Software Requirements:
-
+https://www.quora.com/What-is-the-VGG-neural-network
 
 ---
 <a id='acknowledgements_and_contact'></a>
