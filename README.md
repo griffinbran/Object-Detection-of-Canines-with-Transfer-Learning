@@ -46,9 +46,30 @@ This DSI module covers:
 Here is some background info:
 > * Transfer learning: pre-existing model, trained on a LOT of data, used elsewhere.
 > * Eliminates the need to afford cost of training deep learning models from scratch
-> * 
-> * 
-> * 
+> * Deep CNN model training short-cut, re-use model weights from pre-trained models previously developed for benchmark tests in comupter vision
+> * VGG, Inception, ResNet: 
+> * Weight initialization: weights in re-used layers used as starting point in training and adapted in response to new problem
+> 1. Use model as-is to classify new photographs
+> 2. Use as feature extraction model, output of pre-trained from a layer prior to output layer used as input to new classifier model
+> *  Tasks more similar to the original training might rely on output from layers deep in the model such as the 2nd to last fully connected layer
+> * Layers learn:
+> 1. Layers closer to the input layer of the model:
+    Learn low-level features such as lines, etc.
+> 2. Layers in the middle of the network of layers:
+    Learn complex abstract features that combine the extracted lower-level features from the input
+> 3. Layers closer to the output:
+    Interpret the extracted features in the context of a classification task
+> * Fine-tuning learning rate of pre-trained model 
+> * Transfer Learning Tasks
+> 1.
+> 2. 
+> 3.
+> 4.
+> * Architectures:
+> 1. Consistent and repeating structures (VGG)
+> 2. Inception modules (GoogLeNet)
+> 3. Residual modules  (ResNet)
+
 
 ### Data Dictionary
 
@@ -213,7 +234,9 @@ External Resources:
 Papers:
 * `VisualBackProp: efficient visualization of CNNs` (arXiv): ([*source*](https://arxiv.org/pdf/1611.05418.pdf))
 * `Very Deep Convolutional Networks For Large-Scale Image Recognition` (arXiv): ([*source*](https://arxiv.org/pdf/1409.1556.pdf))
+* `Transfer Learning in Keras with Computer Vision Models` (Machine Learning Mastery): ([*source*](https://machinelearningmastery.com/how-to-use-transfer-learning-when-developing-convolutional-neural-network-models/))
 
+    
 ### Contact:
 
 > * Brandon Griffin ([GitHub](https://github.com/griffinbran) | [LinkedIn](https://www.linkedin.com/in/griffinbran/))
