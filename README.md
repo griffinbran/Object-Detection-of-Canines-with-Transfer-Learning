@@ -88,36 +88,39 @@ Here is some background info:
 |**variable1**|*dtype*|Origin of Data|*Category*|*Description*|
 
 
-|**VGG-16 Block**|**CNN Layer (Type)**|*Kernel Size*|*Nodes*|Parameters|*Stride*|*Output Shape ( h x w x Ch )*|
+|*VGG-16 Block*|*Name (Type)*|*Kernel Size*|*Nodes*|Params #|*Stride/Pool*|*Output ( h x w x depth )*|
 |---|---|---|---|---|---|---|
-|**First**|**input1 (Input)**|*No Filter*|None|0|None|*( None, 224, 224, 3 ) -RGB*|
-|**Block 01**|**conv1 (Conv2D)**|*( 3 x 3 )*|64|1,792|*( 1 x 1 )*|*(  None, 224, 224, 64 )*|
-|**Block 01**|**conv2 (Conv2D)**|*( 3 x 3 )*|64| 36,928 |*( 1 x 1 )*|*(  None, 224, 224, 64 )*|
-|<span style="color:yellow">**Block 01**</span>|<span style="color:yellow">**pool1 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*(  None, 112, 112, 64 )*|
-|**Block 02**|**conv1 (Conv2D)**|*( 3 x 3 )*|128| 73,856 |*( 1 x 1 )*|*(  None, 112, 112, 128 )*|
-|**Block 02**|**conv2 (Conv2D)**|*( 3 x 3 )*|128| 147,584 |*( 1 x 1 )*|*(  None, 112, 112, 128 )*|
-|<span style="color:yellow">**Block 02**</span>|<span style="color:yellow">**pool2 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*(  None, 56, 56, 128 )*|
-|**Block 03**|**conv1 (Conv2D)**|*( 3 x 3 )*|256| 295,168 |*( 1 x 1 )*|*(  None, 56, 56, 256 )*|
-|**Block 03**|**conv2 (Conv2D)**|*( 3 x 3 )*|256| 590,080 |*( 1 x 1 )*|*(  None, 56, 56, 256 )*|
-|**Block 03**|**conv3 (Conv2D)**|*( 3 x 3 )*|256| 590,080 |*( 1 x 1 )*|*(  None, 56, 56, 256 )*|
-|<span style="color:yellow">**Block 03**</span>|<span style="color:yellow">**pool3 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*(  None, 28, 28, 256 )*|
-|**Block 04**|**conv1 (Conv2D)**|*( 3 x 3 )*|512| 1,180,160 |*( 1 x 1 )*|*(  None, 28, 28, 512 )*|
-|**Block 04**|**conv2 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( None, 28, 28, 512 )*|
-|**Block 04**|**conv3 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*(  None, 28, 28, 512 )*|
-|<span style="color:yellow">**Block 04**</span>|<span style="color:yellow">**pool4 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*(  None, 14, 14, 512 )*|
-|**Block 05**|**conv1 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( None, 14, 14, 512 )*|
-|**Block 05**|**conv2 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( None, 14, 14, 512 )*|
-|**Block 05**|**conv3 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*(  None, 14, 14, 512 )*|
-|<span style="color:yellow">**Block 05**</span>|<span style="color:yellow">**pool5 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*( None, 7, 7, 512 )* 25_088 = 7x7x512|
-|**---**|**flatten (Flatten)**|*No Filter*|---|---|*( ? x ? )*|*(  None, 25088 )*|
-|**Fully Connected**|**fc 01 (Dense)**|*( 3 x 3 )*|50| 16,781,312 |*( 1 x 1 )*|*(  None, 4,096 )*|
-|**Fully Connected**|**fc 02 (Dense)**|*( 3 x 3 )*|50| 16,781,312 |*( 1 x 1 )*|*(  None, 4,096 )*|
-|**Last**|**Output (Dense)**|*( 3 x 3 )*|1| 4,097,000 |*( 1 x 1 )*|*( None, 1,000 )*|
+|**00-First**|**input1 (Input)**|*No Filter*|None|0|None|*( Batch, 224, 224, 3-RGB )*|
+|**01-Block 01**|**conv1 (Conv2D)**|*( 3 x 3 )*|64|1,792|*( 1 x 1 )*|*( Batch, 224, 224, 64 )*|
+|**02-Block 01**|**conv2 (Conv2D)**|*( 3 x 3 )*|64| 36,928 |*( 1 x 1 )*|*( Batch, 224, 224, 64 )*|
+|<span style="color:yellow">**03-Block 01**</span>|<span style="color:yellow">**pool1 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*( Batch, 112, 112, 64 )*|
+|**04-Block 02**|**conv1 (Conv2D)**|*( 3 x 3 )*|128| 73,856 |*( 1 x 1 )*|*( Batch, 112, 112, 128 )*|
+|**05-Block 02**|**conv2 (Conv2D)**|*( 3 x 3 )*|128| 147,584 |*( 1 x 1 )*|*( Batch, 112, 112, 128 )*|
+|<span style="color:yellow">**06-Block 02**</span>|<span style="color:yellow">**pool2 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*( Batch, 56, 56, 128 )*|
+|**07-Block 03**|**conv1 (Conv2D)**|*( 3 x 3 )*|256| 295,168 |*( 1 x 1 )*|*( Batch, 56, 56, 256 )*|
+|**08-Block 03**|**conv2 (Conv2D)**|*( 3 x 3 )*|256| 590,080 |*( 1 x 1 )*|*( Batch, 56, 56, 256 )*|
+|**09-Block 03**|**conv3 (Conv2D)**|*( 3 x 3 )*|256| 590,080 |*( 1 x 1 )*|*( Batch, 56, 56, 256 )*|
+|<span style="color:yellow">**10-Block 03**</span>|<span style="color:yellow">**pool3 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*( Batch, 28, 28, 256 )*|
+|**11-Block 04**|**conv1 (Conv2D)**|*( 3 x 3 )*|512| 1,180,160 |*( 1 x 1 )*|*( Batch, 28, 28, 512 )*|
+|**12-Block 04**|**conv2 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( Batch, 28, 28, 512 )*|
+|**13-Block 04**|**conv3 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( Batch, 28, 28, 512 )*|
+|<span style="color:yellow">**14-Block 04**</span>|<span style="color:yellow">**pool4 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">*( Batch, 14, 14, 512 )*|
+|**15-Block 05**|**conv1 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( Batch, 14, 14, 512 )*|
+|**16-Block 05**|**conv2 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( Batch, 14, 14, 512 )*|
+|**17-Block 05**|**conv3 (Conv2D)**|*( 3 x 3 )*|512| 2,359,808 |*( 1 x 1 )*|*( Batch, 14, 14, 512 )*|
+|<span style="color:yellow">**18-Block 05**</span>|<span style="color:yellow">**pool5 (MaxPooling2D)**</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">None</span>|<span style="color:yellow">0</span>|<span style="color:yellow">*( 2 x 2 )*</span>|<span style="color:yellow">( Batch, 7, 7, 512 )|
+|**19 4D --> 2D**|**flatten (Flatten)**|*No Filter*|None|0|*None*|*( Batch, 25,088 )*|
+|**20-Fully Connected**|**fcon1 (Dense)**|*No Filter*|4,096| 102,764,544 |*None*|*( Batch, 4,096 )*|
+|**21-Fully Connected**|**fcon2 (Dense)**|*No Filter*|4,096| 16,781,312 |*None*|*( Batch, 4,096 )*|
+|**22-Last Layer**|**Output (Dense)**|*No Filter*|1,000| 4,097,000 |*None*|*( Batch, 1,000 )*|
 
+* NOTE : <br>
+    CONV2D: \# Param = [ (Kernel-Size x Channel-Depth)+1 ] x Filters-Nodes<br>
+    DENSE : \# Param = [ ( Input Size/Shape ) + 1 ] x Output Size/Shape<br><br>
+- Total params: 138,357,544<br>
+- Trainable params: 138,357,544<br>
+- Non-trainable params: 0<br>
 
-Total params: 138,357,544
-Trainable params: 138,357,544
-Non-trainable params: 0
 
 # ![](https://neurohive.io/wp-content/uploads/2018/11/vgg16-neural-network.jpg)
 
@@ -152,6 +155,14 @@ Non-trainable params: 0
 
 ---
 <a id='data_aquisition_and_cleaning'></a>
+### Data Aquisition & Cleaning
+#### Cloning and Debugging
+
+> * 
+> * 
+> * 
+> * 
+    
 ### Data Aquisition & Cleaning
 #### Cloning and Debugging
 
