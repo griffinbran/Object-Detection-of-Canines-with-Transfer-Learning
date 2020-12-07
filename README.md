@@ -29,6 +29,7 @@ This DSI module covers:
 - Computer Vision ( RGB image processing, image formation, feature detection, computational photography)
 - Convolutional Neural Networks(CNN)- regularization, automated pattern recognition, ...
 - Transfer Learning with a pre-trained deep learning image classifier (VGG-16 CNN from Visual Geometry Group in 2014)
+- Automatic photo captioning, Visual Question Answering (VQA)
 
 ### Contents
 
@@ -240,7 +241,7 @@ External Resources:
 * [`Google Open Source: Dog Detection`] (Open Images): ([*source*](https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=detection&c=%2Fm%2F0bt9lr))
 * [`Google Open Source: Dog Segmentation`] (Open Images): ([*source*](https://storage.googleapis.com/openimages/web/visualizer/index.html?set=train&type=segmentation&c=%2Fm%2F0bt9lr&r=false))
 * [`VGG-19`] (Keras API): ([*source*](https://keras.io/api/applications/vgg/))
-
+* [`ImageNet ILSVRC Competition`] (Machine Learning Mastery): ([*source*](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/))
 
 Papers:
 * `VisualBackProp: efficient visualization of CNNs` (arXiv): ([*source*](https://arxiv.org/pdf/1611.05418.pdf))
