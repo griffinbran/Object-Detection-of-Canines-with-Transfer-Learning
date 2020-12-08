@@ -243,6 +243,13 @@ External Resources:
 * [`VGG-19`] (Keras API): ([*source*](https://keras.io/api/applications/vgg/))
 * [`ImageNet ILSVRC Competition`] (Machine Learning Mastery): ([*source*](https://machinelearningmastery.com/introduction-to-the-imagenet-large-scale-visual-recognition-challenge-ilsvrc/))
 
+    
+<span>Photo by <a href="https://unsplash.com/@jessedo81?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">jesse orrico</a> on <a href="https://unsplash.com/s/photos/dogs?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+    
+    
+    <span>Photo by <a href="https://unsplash.com/@wildmooncreative?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Kasey McCoy</a> on <a href="https://unsplash.com/s/photos/dogs?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+    
+    
 Papers:
 * `VisualBackProp: efficient visualization of CNNs` (arXiv): ([*source*](https://arxiv.org/pdf/1611.05418.pdf))
 * `Very Deep Convolutional Networks For Large-Scale Image Recognition` (arXiv): ([*source*](https://arxiv.org/pdf/1409.1556.pdf))
@@ -258,6 +265,6 @@ Project Link: ([*source*](https://github.com/griffinbran/machines_best_friend.gi
 ---
 ### Submission
 
-**Materials must be submitted by 4:59 PST on Friday, December 10, 2020.**
+**Materials must be submitted by 4:59 PST on Friday, December 11, 2020.**
 
 ---
