@@ -25,7 +25,7 @@ Capstone Project
 This DSI module covers:
 
 - Machine Learning for Deep Neural Networks (TensorFlow, Keras API)
-- 
+- Binary Classification Predictive Modeling
 - Computer Vision ( RGB image processing, image formation, feature detection, computational photography)
 - Convolutional Neural Networks(CNN)- regularization, automated pattern recognition, ...
 - Transfer Learning with a pre-trained deep learning image classifier (VGG-16 CNN from Visual Geometry Group in 2014)
@@ -45,7 +45,7 @@ This DSI module covers:
 ### Background
 
 Here is some background info:
-> * Transfer learning: pre-existing model, trained on a LOT of data, used elsewhere.
+> * Transfer learning: pre-existing model, trained on millions of images over the period of several weeks.
 > * Eliminates the need to afford cost of training deep learning models from scratch
 > * Deep CNN model training short-cut, re-use model weights from pre-trained models previously developed for benchmark tests in comupter vision
 > * VGG, Inception, ResNet: 
@@ -81,10 +81,9 @@ Here is some background info:
 |---|---|---|---|---|
 |**variable1**|*dtype*|Origin of Data|*Category*|*Description*|
 |**variable2**|*dtype*|Origin of Data|*Category*|*Description*|
-|**IMAGE_HEIGHT**|*int*|utils.py|*Global Variable*|*160(pixels)-Vertical units across: Top=0 to Bottom= 159*|
-|**IMAGE_WIDTH**|*int*|utils.py|*Global Variable*|*320(pixels)-Horizontal units across: Left=0 to Right= 319*|
+|**IMAGE_HEIGHT**|*int*|utils.py|*Global Variable*|*224(pixels)*|
+|**IMAGE_WIDTH**|*int*|utils.py|*Global Variable*|*224(pixels)*|
 |**IMAGE_CHANNELS**|*int*|utils.py|*Global Variable*|*3-RGB Channels*|
-|**INPUT_SHAPE**|*3-tuple*|utils.py|*Global Variable*|*(IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS)*|
 |**variable2**|*dtype*|Origin of Data|*Category*|*Description*|
 |**variable1**|*dtype*|Origin of Data|*Category*|*Description*|
 
@@ -132,26 +131,6 @@ Here is some background info:
 |**Bseline MSE**|*Training*|02|0.0266|0.3248|
 |**Bseline MSE**|*Validation*|02|0.0205|0.8240|
 
-|**CNN Model**|*Split*|*Epoch*|*Loss*|*Accuracy*|
-|---|---|---|---|---|
-|**Huber Loss, $\delta$=0.2**|*Training*|01|0.0243|0.3254|
-|**Huber Loss, $\delta$=0.2**|*Validation*|01|0.0207|0.8245|
-|**Huber Loss, $\delta$=0.2**|*Training*|02|0.0131|0.3247|
-|**Huber Loss, $\delta$=0.2**|*Validation*|02|0.0097|0.8235|
-|**Huber Loss, $\delta$=0.4**|*Training*|01|0.0158|0.3252|
-|**Huber Loss, $\delta$=0.4**|*Validation*|01|0.0093|0.8227|
-|**Huber Loss, $\delta$=0.4**|*Training*|02|0.0133|0.3249|
-|**Huber Loss, $\delta$=0.4**|*Validation*|02|0.0103|0.8233|
-|**Huber Loss, $\delta$=0.6**|*Training*|01|0.0160|0.3252|
-|**Huber Loss, $\delta$=0.6**|*Validation*|01|0.0092|0.8225|
-|**Huber Loss, $\delta$=0.6**|*Training*|02|0.0135|0.3249|
-|**Huber Loss, $\delta$=0.6**|*Validation*|02|0.0103|0.8236|
-|**Huber Loss, $\delta$=0.8**|*Training*|01|0.0160|0.3252|
-|**Huber Loss, $\delta$=0.8**|*Validation*|01|0.0093|0.8213|
-|**Huber Loss, $\delta$=0.8**|*Training*|02|0.0135|0.3249|
-|**Huber Loss, $\delta$=0.8**|*Validation*|02|0.0099|0.8236|
-|**Huber Loss, $\delta$=1.0**|*Training*|02|0.0134|0.3248|
-|**Huber Loss, $\delta$=1.0**|*Validation*|02|0.0097|0.8235|
 
 
 ---
@@ -174,7 +153,7 @@ Here is some background info:
 
 #### Cloud Computing / Computing with GPU
 
-> * 
+> * Google CoLab Pro High-RAM(27.4 GB RAM available in runtime memory) plus GPU had to be used to fit the transfer model without a batch generator(cost $10 for the month). Even with the High-RAM I had to be very careful with order of loading variables into memory. Colab Kernels crashed many times and everytime had to start over from scratch with data loading.
 > * 
 > * 
 > * 
@@ -182,8 +161,9 @@ Here is some background info:
 #### Training the CNN
 
 > * Network architecture: X layers, X convolution layers, X fully connected layers
-> * and then..
+> * model_vgg16_flatten.h5
 > * 
+> *
 
                         
 ---
@@ -191,36 +171,24 @@ Here is some background info:
 ### Exploratory Analysis
 
 > * Insert EDA details...
-> *
-> *
+> * 108,077 images total in Visual Genome(VG), 3,235 images with dogs (or hot dogs, see below), 1,995 dog pics in training dataset (part 1), 1,240 dog pics in 
+> * Hot dogs, I saw like anywhere between 6-10 in the images that were supposed to be dogs. This is a problem, because they are randomly labeled improperly. It makes me have to ask the question, what other common words are introducing bias in the AI due to language?
 
-**Data Cleaning and EDA**
-- Does the student fix data entry issues?
-- Are data appropriately labeled?
-- Are data appropriately typed?
-- Are datasets combined correctly?
-- Are appropriate summary statistics provided?
-- Are steps taken during data cleaning and EDA framed appropriately?
 
 ### Data Visualization
 
-> * Make some pretty plots with Tableau:
 
-**Visualizations**
-- Are the requested visualizations provided?
-- Do plots accurately demonstrate valid relationships?
-- Are plots labeled properly?
-- Plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
 
 ---
 <a id='findings_and_recommendations'></a>
 ### Findings and Recommendations
 
   Answer the problem statement:
-> 1. Point 1...
-> 2. Point 2...
-> 3. Point 3...
+> 1. YES, with an accuracy of 97.5% the model can identify a dog in an image it has never seen before. With an accuracy about half a percentage point above the baseline score of 97% which would result if the model predicted every single image had no dog, we can say that the model is better than no model lol. Important to consider, moving forward, would be a batch generator to reduce memory demands by moving old batches of data out of memory and new batches of data into RAM iteratively as the model is training. This  allows for a number of benefits such as:
+A.) Data Augmentation, I actually have written a batch generator to perform image augmentation which will act as a regularization technique by preventing overfitting. By augmenting training data the model never sees the exact same image twice and this is ok because a dog is still a dog even if it flipped, reduced in size, enlarged, rotated, etc.
+B.) Batch size is given more freedom to choose larger BASE-2 values, because we no longer need load the entire image dataset into memory.
+> 2. Consider the similarity of images, specifically ImageNet images vs Visual Genome data. Visual Genome images are very random with dog objects as the minor object in many. Images have on average up to 35 objects identified, but I did not look at any ImageNet data. Maybe I could have extracted features from a layer lower in the network near the input and obtained less error.
+> 3. Predicting breeds would be pretty cool. All I would need to do is ID the breed of dog in over 3K images lol. Ideally an app hosted on Heroku that allows users to upload a dog pic and in return they get the top 5 breed predictions from the model. Top 5 because if someone wants to know the breed of their dog it probably isn't a purebreed. It probably is a mut and multiple breed labels are more apropriate.
 
 ---
 <a id='next_steps'></a>
@@ -268,3 +236,9 @@ Project Link: ([*source*](https://github.com/griffinbran/machines_best_friend.gi
 **Materials must be submitted by 4:59 PST on Friday, December 11, 2020.**
 
 ---
+    
+> * CONV2D: # Param = [ (Kernel-Size x Channel-Depth)+1 ] x Filters-Nodes
+> * DENSE : # Param = [ ( Input Size/Shape ) + 1 ] x Output Size/Shape
+> * ImageNet Large Scale Visual Recognition Challenge (ILSVRC)
+> * evaluates algorithms for object localization/detection from images/videos at scale
+> * Visual Geometry Group from Oxford 2014
